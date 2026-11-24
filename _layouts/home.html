@@ -1,0 +1,81 @@
+---
+layout: default
+---
+<h1 class="visually-hidden">Yasser: writing and projects</h1>
+
+<div class="home-grid">
+  <section id="writing" class="block">
+    <h2>Writing</h2>
+
+    <div class="post-tools">
+      <div class="search-field">
+        <label for="post-search">Search writing</label>
+        <div class="search-line">
+          <input type="search" id="post-search" placeholder="Title, topic, or keyword" autocomplete="off" spellcheck="false" aria-controls="post-list">
+          <button class="surprise-button" type="button" data-surprise>Surprise me</button>
+        </div>
+      </div>
+
+      {% assign category_names = site.posts | map: 'categories' | join: ',' | split: ',' | uniq | sort %}
+      <div class="filters" role="group" aria-label="Filter by category. Multiple categories can be selected.">
+        <button type="button" class="filter-chip" data-filter="" aria-pressed="true">All</button>
+        {% for category in category_names %}
+        <button type="button" class="filter-chip" data-filter="{{ category | downcase }}" aria-pressed="false">{{ category }}</button>
+        {% endfor %}
+      </div>
+
+      <p class="result-count" role="status" aria-live="polite">{{ site.posts.size }} posts</p>
+    </div>
+
+    <div class="post-list" id="post-list">
+      {% for post in site.posts %}
+      <a class="post-item" href="{{ post.url | relative_url }}"
+         data-categories="{{ post.categories | join: '|' | downcase }}"
+         data-search="{{ post.title | append: ' ' | append: post.excerpt | strip_html | normalize_whitespace | downcase | escape }}">
+        <span class="post-date">{{ post.date | date: "%-d %b %Y" }}</span>
+        <span class="post-title">{{ post.title }}</span>
+        <p>{{ post.excerpt | strip_html | normalize_whitespace | truncatewords: 26 }}</p>
+      </a>
+      {% endfor %}
+    </div>
+
+    <p class="post-empty" data-empty hidden>No posts match that search.</p>
+  </section>
+
+  <section id="projects" class="block">
+    <h2>Projects</h2>
+    <p class="block-lede">Tools I maintain.</p>
+
+    {% assign featured = site.projects | where: 'featured', true | sort_natural: 'title' %}
+    <section class="project-carousel{% if featured.size > 1 %} has-controls{% endif %}" data-carousel aria-label="Featured projects">
+      <div class="carousel-stage" data-stage>
+        {% for item in featured %}
+        <div class="project-face" data-face role="group" aria-roledescription="slide" aria-label="{{ forloop.index }} of {{ featured.size }}">
+          {% if item.link %}<a class="project-face-inner" href="{{ item.link | relative_url }}">{% else %}<div class="project-face-inner">{% endif %}
+            <span class="work-title">{{ item.title }}</span>
+            <span class="work-meta">{{ item.kind }}, {{ item.year }}</span>
+            <p>{{ item.description }}</p>
+            <span class="work-stack">{{ item.stack }}</span>
+            {% if item.link %}<span class="work-link">{{ item.link_label | default: "Open" }}</span>{% endif %}
+          {% if item.link %}</a>{% else %}</div>{% endif %}
+        </div>
+        {% endfor %}
+      </div>
+
+      {% if featured.size > 1 %}
+      <div class="carousel-controls">
+        <button type="button" class="carousel-next" data-next aria-label="Next project">
+          <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false">
+            <path d="M3 8h9M8 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      <p class="visually-hidden" role="status" data-status></p>
+      {% endif %}
+    </section>
+  </section>
+</div>
+
+<script defer src="{{ '/assets/search.js' | relative_url }}"></script>
+<script defer src="{{ '/assets/surprise.js' | relative_url }}"></script>
+<script defer src="{{ '/assets/projects.js' | relative_url }}"></script>
