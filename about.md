@@ -8,20 +8,20 @@ wide: true
 <div class="about-grid">
   <section class="about-left" aria-label="Profile">
     <h2>Profile</h2>
-    <p>I'm Yasser (pwn2nice). I work on mobile vulnerability research: iOS kernel and app-layer bugs, from JavaScript engine sandbox escapes to static kernel offset discovery. I wrote auto-darksword and Homer, did adversarial testing for Google DeepMind, and placed in the Hack The Box top 1000. I have always had an interest in this field and have consulted for FAANG companies on internal LLM security assessment.</p>
+    <p>I'm Yasser (pwn2nice). I work on mobile vulnerability research: iOS kernel and app-layer bugs, from JavaScript engine sandbox escapes to RCEs via logic bugs. I wrote Homer and cb-exec, did adversarial testing for Google DeepMind, and placed in the Hack The Box top 1000. I have always had an interest in applied cybersecurity and study it academically, too.</p>
 
     <h2>Skills</h2>
     <dl class="cv-skills">
       <dt>Mobile and iOS</dt>
-      <dd>ARM64, XNU kernelcache, iBoot, QuickJS and JavaScript engine internals, sandbox escape, heap grooming, out-of-bounds read/write primitives, crash triage, iOS 13.0 to 26.0.1</dd>
+      <dd>ARM64, XNU kernelcache, iBoot, sandbox escapes, heap grooming, out-of-bounds read/write primitives, crash triage, TxM, PAC, CodeSign, AMI...</dd>
       <dt>Vulnerability research</dt>
       <dd>Root-cause analysis, PoC development, write-ups, CVSS scoring, exploit-path analysis. CVE-2026-109618 and CVE-2026-109619 (php2shell RCE)</dd>
       <dt>Languages</dt>
       <dd>C, Python, ARM64 assembly, JavaScript, HTML, Go, Rust, x86-64 assembly (reading)</dd>
       <dt>Reverse engineering</dt>
-      <dd>Stripped Mach-O and kernelcache binaries, PE, XNU assert strings, ARM64 decoding, offset derivation, debugging</dd>
+      <dd>Stripped Mach-O and kernelcache binaries, PE, XNU kernel, ARM64 binaries, offset derivation, debugging, QuickJS and V8 engine internals</dd>
       <dt>Windows internals</dt>
-      <dd>NT loader (LdrLoadDll, PEB, LDR_DATA_TABLE_ENTRY), namespaces, Winsock, syscalls, API-set redirection, C2 agents, position-independent shellcode, manual PE mapping, EDR evasion, unhooking</dd>
+      <dd>NT loader, namespaces, syscalls, API-set redirection, C2 agents, position-independent shellcode, manual PE mapping, EDR evasion, unhooking</dd>
       <dt>Engineering</dt>
       <dd>Git, CI/CD, automated tests, code maintainability</dd>
     </dl>
